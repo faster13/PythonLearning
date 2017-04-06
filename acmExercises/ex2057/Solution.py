@@ -1,8 +1,9 @@
-strDict = {}
+from collections import OrderedDict
+strDict = OrderedDict()
 tmpStr = ""
 numOfOp = 0
-selectMethod = 0
-key = ''
+fndKey = [0,0]
+sortedFlag = False
 
 f = open("input.txt")
 
@@ -17,12 +18,15 @@ while numOfOp > 0:
             strDict[curVal] = 1
         else:
             strDict[curVal] = strDict[curVal] + 1
+    sortedFlag = True
     if selectMethod == 2:
-        for key in sorted(strDict):
-            print(key)
-            break
-        if strDict[key] - 1 == 0:
-            strDict.pop(key)
+        if sortedFlag:
+            OrderedDict(sorted(strDict.items(), key=lambda t: t[0]))
+            sortedFlag = False
+        fndKey = list(strDict.items())[0]
+        print(fndKey[0])
+        if fndKey[1] > 1:
+            strDict[fndKey[0]] -= 1
         else:
-            strDict[key] -= 1
+            strDict.pop(fndKey[0])
     numOfOp -= 1
