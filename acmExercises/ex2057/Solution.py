@@ -1,5 +1,4 @@
-from collections import OrderedDict
-strDict = OrderedDict()
+strDict = {}
 tmpStr = ""
 numOfOp = 0
 fndKey = [0,0]
@@ -17,13 +16,16 @@ while numOfOp > 0:
         if curVal not in strDict:
             strDict[curVal] = 1
         else:
-            strDict[curVal] = strDict[curVal] + 1
-    sortedFlag = True
+            strDict[curVal] += 1
+        sortedFlag = True
     if selectMethod == 2:
         if sortedFlag:
-            OrderedDict(sorted(strDict.items(), key=lambda t: t[0]))
+            for item in sorted(strDict.items()):
+                fndKey = item
+                break
             sortedFlag = False
-        fndKey = list(strDict.items())[0]
+        else:
+            fndKey = strDict.
         print(fndKey[0])
         if fndKey[1] > 1:
             strDict[fndKey[0]] -= 1
