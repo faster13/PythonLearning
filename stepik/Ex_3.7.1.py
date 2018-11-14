@@ -33,3 +33,4 @@ for team_name, score in teams.items():
     print(team_name + ": ", end = "")
     [print(str(point) + " ", end = " ") for point in score]
     print()
+    
